@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name_role: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        
       },
      
     });

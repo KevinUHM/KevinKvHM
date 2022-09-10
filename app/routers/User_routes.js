@@ -15,8 +15,10 @@ const UserController = require('../controllers/User_controller');
 router.get('/api/users-employee',auth, UserController.allUserEmpleado);
 router.get('/api/users/roles',auth, UserController.allUserRole);
 router.get('/api/user-data/:id',auth, UserController.getUser);
+
 router.post('/api/users/signin', UserController.SignIn);
 router.post('/api/users/signup', UserController.createCou);
+
 router.post('/api/users/update/:id',auth, UserController.updateUser);
 router.delete('/api/users/delete/:id',auth, UserController.deleteUser);
 

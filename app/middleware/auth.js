@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
                 res.status(500).json({ msg: "Ha ocurrido un problema al verificar el token", err });
             } else {
                 db.user.findByPk(decoded.user.id, { include: 'role' }).then(user => {
-                    console.log(db.user.role);
+                   
                     req.user = user;
                     next();
                 });
@@ -35,10 +35,3 @@ module.exports = (req, res, next) => {
 
 };
 
-/*User.findByPk(decoded.user.id, { include: "roles" }).then(user => {
-
-                    //console.log(user.roles);
-
-                    req.user = user;
-                    next();
-                });*/

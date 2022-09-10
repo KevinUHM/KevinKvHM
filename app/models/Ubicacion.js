@@ -2,11 +2,8 @@
 const {
   Model
 } = require('sequelize');
-
 module.exports = (sequelize, DataTypes) => {
-
-
-  class Role extends Model {
+  class Ubicacion extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -16,22 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Role.init({
-    name_role: {
-      type: DataTypes.STRING,
-      unique: true
-      }
+  Ubicacion.init({
+    longitud: DataTypes.FLOAT,
+    latidud: DataTypes.FLOAT
   }, {
-    timestamps: false,
     sequelize,
-    modelName: 'role',
+    modelName: 'ubicacion',
   });
- 
-  Role.associate = function(models){
-    Role.hasMany(models.user, {
-      foreignKey: 'roleId',
-      as: 'user'
-    }) 
+
+ Ubicacion.associate = function(models){
+    Ubicacion.hasOne(models.school, {
+      foreignKey: 'ubicacionId',
+      as: 'school'
+    });
   }
-  return Role;
+  return Ubicacion;
 };

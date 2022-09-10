@@ -48,6 +48,10 @@ module.exports = (sequelize, DataTypes) => {
       targetKey: 'id',
       as: 'employee'
     });
+    User.hasMany(models.school, {
+        foreignKey: 'userId',
+        as: 'school'
+      }); 
   }
   
   return User;

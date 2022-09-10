@@ -21,11 +21,11 @@ async allRoles(req,res){
 //Crear roles
 async createRole(req, res) {
     const { name_role } = req.body;
-   let rol = await db.role.create({
-       name_role,
-    })
-    res.json(rol)
-
+            
+            let rol = await db.role.create({
+                name_role,
+             });
+            //res.json(rol)
 },
 
 //get role
