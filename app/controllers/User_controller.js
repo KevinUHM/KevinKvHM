@@ -54,13 +54,15 @@ await db.user.findOne({
         let contraseña = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
 
         //varialbles
-        const {username, email} = req.body
+        const {username, email,} = req.body
         const {full_name, number_phone, oficina} = req.body
-
+        //const role = req.role;
+        let idrole = req.employee
         await db.user.create({
             username,
             email,
             password: contraseña,
+            roleId: idrole,
             employee: {
                 full_name,
                 email,
@@ -80,7 +82,7 @@ await db.user.findOne({
 
            res.json({
                user: user,
-               token: token
+               token: token,
            });
 
        }).catch(err => {

@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         }
     },
-    regionId: {
+  regionId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'regions',

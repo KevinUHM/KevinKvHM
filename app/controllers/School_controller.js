@@ -38,7 +38,6 @@ async createSchool(req, res){
         } 
     },
     {
-     
         include: [{
           association: db.school.associations.director,
           include: [ 'supervisor' ],
