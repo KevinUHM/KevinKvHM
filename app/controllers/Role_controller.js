@@ -13,9 +13,10 @@ async allRolesUser(req,res){
 
 // All roles
 async allRoles(req,res){
-  
+    
     let roles = await db.role.findAll()
     res.json(roles)
+    
 },
 
 //Crear roles
@@ -23,9 +24,9 @@ async createRole(req, res) {
     const { name_role } = req.body;
             
             let rol = await db.role.create({
-                name_role,
+                name_role
              });
-            //res.json(rol)
+            res.json({message: "El role "+ rol.name_role + " se ha añadido correctamente", rol })
 },
 
 //get role

@@ -20,11 +20,15 @@ app.use(require('./routers/Localidad_routes'));
 
 app.listen(PORT, function(){
     console.log('servidor corriendo en el puerto: ' +PORT);    
+<<<<<<< HEAD
 
+=======
+>>>>>>> c8ba71f999276f3b909090e486dfec97c626b764
     conect.sequelize.sync({ alter:true}).then(() => {
         console.log("Se ha establecido la conexión");
     }).catch(error => {
         console.log('Se ha producido un error', error)
     })
 })
+
 
