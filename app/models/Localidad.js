@@ -14,19 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Localidad.init({
-    name: DataTypes.STRING,
-    inegi: DataTypes.INTEGER
+    nameLoc:{
+      type: DataTypes.STRING
+    },
+    claveLocOfi: {
+      type: DataTypes.INTEGER,
+      unique: true
+    }
   }, {
     sequelize,
     modelName: 'localidad',
   });
-  
-  Localidad.associate = function(models){
-    Localidad.hasMany(models.school, {
+Localidad.associate = function(models) {
+    Localidad.belongsTo(models.municipio, {
       foreignKey: 'municipioId',
-      as: 'school'
-    }); 
+      targetId: 'id'
+    });
   }
-
   return Localidad;
 };

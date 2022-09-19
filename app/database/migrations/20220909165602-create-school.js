@@ -61,24 +61,6 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      municipioId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'municipios',
-          key: 'id'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-      },
-      localidadId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'localidads',
-          key: 'id'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-      },
       ubicacionId: {
         type: Sequelize.INTEGER,
         references: {

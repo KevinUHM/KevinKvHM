@@ -11,7 +11,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      inegi: {
+      claveLocOfi: {
         type: Sequelize.INTEGER
       },
       createdAt: {

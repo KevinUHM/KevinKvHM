@@ -14,17 +14,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Region.init({
-    idRegion: DataTypes.INTEGER,
-    region: DataTypes.STRING
+   // idRegion: DataTypes.INTEGER,
+    nameRegion: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'region',
   });
-
+   
   Region.associate = function(models){
-    Region.hasMany(models.school, {
+    Region.hasMany(models.municipio, {
       foreignKey: 'regionId',
-      as: 'school'
+      sourceKey: 'id'
+     // as: 'school'
     });
      
   }

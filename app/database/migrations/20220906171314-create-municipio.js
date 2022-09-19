@@ -7,12 +7,21 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      name: {
+      },/*
+      claveMun: {
         type: Sequelize.STRING
-      },
-      clave: {
+      },*/
+      name: {
         type: Sequelize.INTEGER
+      },
+      localidadId:{
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'localidads',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       createdAt: {
         allowNull: true,
