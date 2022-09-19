@@ -4,25 +4,29 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Municipio extends Model {
-    
-    static associate(models) {
-      // define association here
-    }
+   static associations(models){}
   }
   Municipio.init({
-    name: DataTypes.STRING,
-    clave: DataTypes.INTEGER
-  }, {
+    name:{
+         type: DataTypes.STRING
+  }
+  },{
     sequelize,
     modelName: 'municipio',
   });
 
-Municipio.associate = function(models){
-    Municipio.hasMany(models.school, {
+    Municipio.associate = function(models){
+    Municipio.hasMany(models.localidad, {
       foreignKey: 'municipioId',
-      as: 'school'
-    }); 
+      sourceKey: 'id'
+    });
+
+     Municipio.belongsTo(models.region, {
+      foreignKey: 'regionId',
+      targetId: 'id'
+    });
   }
 
   return Municipio;
+
 };

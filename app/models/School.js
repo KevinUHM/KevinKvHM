@@ -37,20 +37,6 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
   },
-  municipioId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'municipios',
-          key: 'id'
-        }
-    },
-  licalidadId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'localidads',
-        key: 'id'
-      }
-  },
   ubicacionId: {
       type: DataTypes.INTEGER,
       references: {
@@ -77,11 +63,11 @@ module.exports = (sequelize, DataTypes) => {
       targetKey: 'id',
       as: 'usuario'
     });
-    School.belongsTo(models.region, {
+   /* School.belongsTo(models.region, {
       foreignKey: 'regionId',
       targetKey: 'id',
       as: 'region'
-    });
+  });*//*
     School.belongsTo(models.municipio, {
       foreignKey: 'municipioId',
       targetKey: 'id',
@@ -91,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'localidadId',
       targetKey: 'id',
       as: 'localidad'
-    });
+    });*/
     
     School.belongsTo(models.ubicacion, {
       foreignKey: 'ubicacionId',

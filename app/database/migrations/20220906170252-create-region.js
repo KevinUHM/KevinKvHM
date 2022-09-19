@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idRegion: {
+     /* idRegion: {
         type: Sequelize.INTEGER
-      },
-      region: {
+      },*/
+      nameRegion: {
         type: Sequelize.STRING
       },
       createdAt: {

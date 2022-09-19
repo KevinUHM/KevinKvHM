@@ -3,7 +3,7 @@ const app = express();
 const conect = require('./models/index'); 
 const { validationResult } = require('express-validator');
 // Log requests to the console.
-const PORT = parseInt(process.env.PORT, 10) || 7000;
+const PORT = parseInt(process.env.PORT) || 7000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,11 +20,11 @@ app.use(require('./routers/Localidad_routes'));
 
 app.listen(PORT, function(){
     console.log('servidor corriendo en el puerto: ' +PORT);    
-
-    conect.sequelize.sync({ alter:true }).then(() => {
+    conect.sequelize.sync({ alter:true}).then(() => {
         console.log("Se ha establecido la conexión");
     }).catch(error => {
         console.log('Se ha producido un error', error)
     })
 })
+
 
