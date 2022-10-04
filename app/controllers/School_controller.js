@@ -7,9 +7,9 @@ module.exports = {
 async createSchool(req, res){
     const { name_school, cct, nivel, calle, 
             noExterior, numeroInterior, asentamiento,
-            email_school, telefono} = req.body;
+            email_school, telefono, localidadId} = req.body;
     const {name_director, sindicato, telephone, puesto, email_director,status, atencion} = req.body
-    const {name_supervisor, telephone_supervisor,email_suoervisor, recuperado, fecha_recuperado} = req.body
+    const {name_supervisor, telephone_supervisor,email_supervisor, recuperado, fecha_recuperado} = req.body
             let iduser = req.user
     let school = await db.school.create({
         name_school,
@@ -21,6 +21,7 @@ async createSchool(req, res){
         asentamiento,
         email: email_school,
         telefono,
+        localidadId,
         createdAt: new Date(),
         updatedAt: new Date(),
         userId: iduser.id,
@@ -33,7 +34,11 @@ async createSchool(req, res){
             status,
             atencion,
             supervisor: [{
-                name: name_supervisor
+                name: name_supervisor,
+                telephone_supervisor,
+                email_supervisor,
+                recuperado,
+                fecha_recuperado
             }] 
         } 
     },

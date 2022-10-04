@@ -13,9 +13,7 @@ await db.user.findOne({
     where: {
         email: email
     },
-    include: [ {
-        all:true
-    } ]
+    include: [ 'role']
 }).then(user => {
 
     if (!user) {
@@ -57,12 +55,12 @@ await db.user.findOne({
         const {username, email,} = req.body
         const {full_name, number_phone, oficina} = req.body
         //const role = req.role;
-        let idrole = req.employee
+        let idrole = req.role
         await db.user.create({
             username,
             email,
             password: contraseña,
-            roleId: idrole,
+            roleId: idrole.id,
             employee: {
                 full_name,
                 email,
@@ -161,5 +159,10 @@ async deleteUser(req, res) {
 
     }
 },
+//cerrar sesion
+    async logout(req, res){
+        const { token } = req.user;
+
+    }
 }
 

@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
   Municipio.init({
     name:{
          type: DataTypes.STRING
-  }
+  },
+    regionId:{
+      type: DataTypes.INTEGER,
+      references: {
+         model: 'regions',
+        key: 'id',
+     },
+    }
   },{
     sequelize,
     modelName: 'municipio',

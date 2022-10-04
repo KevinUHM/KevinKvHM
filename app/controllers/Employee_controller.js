@@ -5,7 +5,7 @@ const db = require('../models');
 module.exports = {
 
 
-//asosciacion de prueba para empleados
+//asosciacion de prueba para los empleados
 async allEmpleadoUser(req, res) {
     let emp = await db.employee.findAll(
         {

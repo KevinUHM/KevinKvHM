@@ -1,23 +1,23 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('municipios', {
+    await queryInterface.createTable('localidads', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },/*
-      claveMun: {
-        type: Sequelize.STRING
-      },*/
+      },
       name: {
+        type: Sequelize.STRING
+      },
+      claveLocOfi: {
         type: Sequelize.INTEGER
       },
-      localidadId:{
+      municipioId:{
         type: Sequelize.INTEGER,
         references: {
-          model: 'localidads',
+          model: 'municipios',
           key: 'id',
         },
         onDelete: 'CASCADE',
@@ -34,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('municipios');
+    await queryInterface.dropTable('localidads');
   }
 };

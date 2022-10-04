@@ -8,8 +8,8 @@ const { checkExistedSchool } = require('../middleware/validateUser');
 //controlle
 const SchoolController = require('../controllers/School_controller');
 //prueba de fina¿dall user con roles y roles con users
-router.get('/api/schools',auth,SchoolController.allSchool);
-router.post('/api/create-school',auth,validateCreateSchool, checkExistedSchool, SchoolController.createSchool);
+router.get('/api/schools',auth.validateToken,SchoolController.allSchool);
+router.post('/api/create-school',auth.validateToken,validateCreateSchool, checkExistedSchool, SchoolController.createSchool);
 
 
 

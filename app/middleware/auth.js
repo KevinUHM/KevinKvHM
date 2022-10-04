@@ -1,7 +1,15 @@
 const jwt = require('jsonwebtoken');
 const authConfig = require('../../config/auth');
 const db = require('../models'); 
-module.exports = (req, res, next) => {
+module.exports = { 
+
+    async generarToken(req, res, next){
+        // Creamos el token
+        let token = jwt.sign({ user: user }, authConfig.secret, {
+            expiresIn: authConfig.expires
+        });
+    },
+    async validateToken(req, res, next) {
 
     console.log(req.headers);
 
@@ -33,5 +41,5 @@ module.exports = (req, res, next) => {
         })
     }
 
-};
-
+}
+}

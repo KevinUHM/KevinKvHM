@@ -52,10 +52,10 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      regionId: {
+      localidadId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'regions',
+          model: 'localidads',
           key: 'id'
         },
         onDelete: 'CASCADE',

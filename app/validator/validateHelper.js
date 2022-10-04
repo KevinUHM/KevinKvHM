@@ -9,5 +9,5 @@ const validateResult = (req, res, next) => {
         res.send({ errors: err.array() })
     }
 }
-
+//cambios de prueba
 module.exports = { validateResult }

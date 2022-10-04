@@ -19,11 +19,16 @@ app.use(require('./routers/Localidad_routes'));
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 
 app.listen(PORT, function(){
+    /*try {
+            
+    conect.sequelize.authenticate();
+    console.log('servidor corriendo en el puerto: ' +PORT);
+        console.log("Se ha establecido la conexión");
+    } catch (error) {
+        console.log('Se ha producido un error', error)
+    }*/
+    
     console.log('servidor corriendo en el puerto: ' +PORT);    
-<<<<<<< HEAD
-
-=======
->>>>>>> c8ba71f999276f3b909090e486dfec97c626b764
     conect.sequelize.sync({ alter:true}).then(() => {
         console.log("Se ha establecido la conexión");
     }).catch(error => {

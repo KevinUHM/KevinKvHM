@@ -3,7 +3,12 @@ const db = require('../models');
     module.exports = {
      //Comprueba que exista el usuario
        async checkExisted(req, res, next){
-        
+        let nameRole = await db.role.findOne({
+            where:
+            {
+                name_role: 'user'
+            }
+        });
         let user = await db.user.findOne({
             where: {
                 email: req.body.email
@@ -13,14 +18,12 @@ const db = require('../models');
             //Si no existe crea el usuario y le asigna un role por default
                 if (!user) {
                     if(!req.body.roleId){
-                        /*
-                        comprobar que el role ya exista
-                        //req.employee = "user"
-                        */
-                        req.employee = 2;
+                        
+                        //let name = nameRole
+                        req.role = nameRole;
                         next()
                         //tratar con un ciclo for
-                        //res.status(401).json({ msg: "El usuario no existe" })
+                        //res.status(401).json({msg:"holamundo" })
                     }
     
                 } else {
@@ -56,7 +59,7 @@ const db = require('../models');
                 })
         },
     //comprueba si es otro usuario que no sea damin
-    async isAdmin(req, res, next) {
+    async isNotAdmin(req, res, next) {
         let roles = await db.role.findOne({
             where: {
                 id: req.user.role.id
@@ -69,7 +72,7 @@ const db = require('../models');
                     //res.status(500).json('Eres admin'); 
                 }
                 else {
-                    res.status(401).json({msg: "No estas autorizado para ver esta informacion, requieres ser administrador"}); 
+                    res.status(401).json({msg: "No estas autorizado para ver esta informacion, requieres ser de un role"}); 
                 }
                 
             }).catch(err => {

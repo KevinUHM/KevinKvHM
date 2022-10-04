@@ -20,16 +20,30 @@ module.exports = (sequelize, DataTypes) => {
     claveLocOfi: {
       type: DataTypes.INTEGER,
       unique: true
+    },
+    municipioId:{
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'municipios',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
     modelName: 'localidad',
   });
-Localidad.associate = function(models) {
+  Localidad.associate = function(models) {
     Localidad.belongsTo(models.municipio, {
       foreignKey: 'municipioId',
-      targetId: 'id'
+      targetId: 'id',
+      as: 'municipio'
     });
+
+      Localidad.hasMany(models.school, {
+        foreignKey: 'localidadId',
+        targetId: 'id',
+        //as: 'school'
+      });
   }
   return Localidad;
 };
