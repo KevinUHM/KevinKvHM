@@ -3,6 +3,7 @@ const db = require('../models'); //prueba exitosa pero con difine
 module.exports = {
 
 //crear directorio
+//! checar las tablas anidadas de director y supervisor porq no se eliminan cunado se elimina una escuela.
 
 async createSchool(req, res){
 
