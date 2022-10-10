@@ -5,11 +5,13 @@ module.exports = {
 //crear directorio
 
 async createSchool(req, res){
-    const { name_school, cct, nivel, calle, 
+
+    try {
+         const { name_school, cct, nivel, calle, 
             noExterior, numeroInterior, asentamiento,
             email_school, telefono, localidadId} = req.body;
     const {name_director, sindicato, telephone, puesto, email_director,status, atencion} = req.body
-    const {name_supervisor, telephone_supervisor,email_supervisor, recuperado, fecha_recuperado} = req.body
+    const {name_supervisor, telephone_supervisor,email_supervisor, recuperado, directorio_recuperado} = req.body
             let iduser = req.user
     let school = await db.school.create({
         name_school,
@@ -35,10 +37,10 @@ async createSchool(req, res){
             atencion,
             supervisor: [{
                 name: name_supervisor,
-                telephone_supervisor,
-                email_supervisor,
+                telephone: telephone_supervisor,
+                email:email_supervisor,
                 recuperado,
-                fecha_recuperado
+                directorio_recuperado
             }] 
         } 
     },
@@ -51,14 +53,103 @@ async createSchool(req, res){
       }
  
     );
-    res.json({school})
+    return res.status(201).json({school});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error: "error del servidor"}); 
+    }
+
+   
 },
 
 async allSchool(req,res){
-    let school = await db.school.findAll({
-        include: [ 'usuario' ]
+    try {
+        let school = await db.school.findAll({
+        include: [ {
+            all: true
+        }
+            //'usuario'
+         ]
     })
-    res.json(school)
+    return res.status(201).json({school});
+    } catch (error) {
+       console.log(error);
+        return res.status(500).json({error: "error del servidor"}); 
+    }
+    
 },
+
+async allSchoolId (req, res){
+
+const {id} = req.params;
+
+try {
+
+    const school = await db.school.findOne({
+        where: {id},
+        include: [{
+            all: true
+        }]
+    });
+
+    if(!school){
+        return res.status(404).json({error: "La Escuela No Existe"});
+    }else{
+        return res.status(203).json(school);
+    }
+    
+} catch (error) {
+    console.log(error);
+    return res.status(500).json({error: "error del servidor"}); 
+}
+
+},
+//!! no modifca bien los datos de las tablas anidadas director and supervisor correguir
+async updateSchool(req, res){
+
+    try {
+
+        const {id} = req.params;
+
+        const school = await db.school.findOne({
+            where: {id},
+            include: [{ all: true}]
+        })
+        if(!school){
+            return res.status(404).json({error: "La Escuela No Existe"});
+        }else
+
+        school.set(req.body);
+        await school.save();
+
+        return res.status(203).json(school);
+
+    } catch (error) {
+         console.log(error);
+    return res.status(500).json({error: "error del servidor"}); 
+    }
+
+},
+
+async deleteSchool (req, res){
+    try {
+        
+        const {id} = req.params;
+
+        const school = await db.school.findByPk(id);
+        if(!school){
+            return res.status(404).json({error: "No Existe La Escuela"});
+        }else{
+            await db.school.destroy({
+                where: {id}
+            });
+            return res.status(201).json({msg: "Escuela Eliminada"});
+      }
+    
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error: "error del servidor"}); 
+    }
+}
 
 }

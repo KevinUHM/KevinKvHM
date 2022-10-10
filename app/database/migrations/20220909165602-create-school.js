@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       numeroInterior: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       asentamiento: {
         type: Sequelize.STRING
@@ -33,7 +33,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       telefono: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: true,

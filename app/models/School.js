@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     nivel: DataTypes.STRING,
     calle: DataTypes.STRING,
     noExterior: DataTypes.INTEGER,
-    numeroInterior: DataTypes.INTEGER,
+    numeroInterior: DataTypes.STRING,
     asentamiento: DataTypes.STRING,
     email: DataTypes.STRING,
-    telefono: DataTypes.INTEGER,
+    telefono: DataTypes.STRING,
     userId: {
         type: DataTypes.INTEGER,
         references: {

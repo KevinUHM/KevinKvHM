@@ -19,8 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     telephone: DataTypes.INTEGER,
     puesto: DataTypes.STRING,
     email: DataTypes.STRING,
-    status: DataTypes.BOOLEAN,
-    atencion: DataTypes.BOOLEAN,
+    status: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
+    atencion: DataTypes.STRING,
     supervisorId: {
       type: DataTypes.INTEGER,
       references: {
