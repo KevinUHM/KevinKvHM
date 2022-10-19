@@ -17,5 +17,5 @@ module.exports = {
       port: process.env.DB_PORT,
       dialect: "postgres",
   }
-  //cambios para main
-};
+  //nuevps cambios
+}
