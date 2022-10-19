@@ -8,8 +8,8 @@ async createSchool(req, res){
     const { name_school, cct, nivel, calle, 
             noExterior, numeroInterior, asentamiento,
             email_school, telefono, localidadId} = req.body;
-    const {name_director, sindicato, telephone, puesto, email_director,status, atencion} = req.body
-    const {name_supervisor, telephone_supervisor,email_supervisor, recuperado, fecha_recuperado} = req.body
+    const {name_director, sindicato, telefono_director, puesto, email_director,status, atencion} = req.body
+    const {name_supervisor, telefono_supervisor,email_supervisor, recuperado, fecha_recuperado} = req.body
             let iduser = req.user
     let school = await db.school.create({
         name_school,
@@ -28,17 +28,17 @@ async createSchool(req, res){
         director: {
             name: name_director,
             sindicato,
-            telephone,
+            telephone: telefono_director,
             puesto,
             email: email_director,
             status,
             atencion,
             supervisor: [{
                 name: name_supervisor,
-                telephone_supervisor,
-                email_supervisor,
+                telephone: telefono_supervisor,
+                email: email_supervisor,
                 recuperado,
-                fecha_recuperado
+                //directorio_recuperado: new Date()
             }] 
         } 
     },

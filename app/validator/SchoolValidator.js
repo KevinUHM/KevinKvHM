@@ -11,6 +11,7 @@ body('numeroInterior').trim().notEmpty().exists().isNumeric(),
 body('asentamiento').trim().notEmpty().exists(),
 body('email_school').trim().isEmail().normalizeEmail(),
 body('telefono').trim().notEmpty().exists().isNumeric(),
+body('localidadId').trim().notEmpty().exists().isNumeric(),
 
     validateDirector = [
         body('name_director').trim().notEmpty().exists(),
