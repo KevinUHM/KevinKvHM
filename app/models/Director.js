@@ -23,7 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
-    atencion: DataTypes.BOOLEAN,
+    atencion: { 
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
     supervisorId: {
       type: DataTypes.INTEGER,
       references: {
