@@ -18,4 +18,4 @@ module.exports = {
       dialect: "postgres",
   }
   //nuevps cambios
-}
+};
