@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
-    atencion: DataTypes.STRING,
+    atencion: DataTypes.BOOLEAN,
     supervisorId: {
       type: DataTypes.INTEGER,
       references: {
