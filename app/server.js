@@ -3,7 +3,7 @@ const app = express();
 const conect = require('./models/index'); 
 const { validationResult } = require('express-validator');
 // Log requests to the console.
-const PORT = parseInt(process.env.PORT) || 7000;
+const PORT = parseInt(process.env.PORT);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
